@@ -5,25 +5,18 @@ from nltk.tokenize import regexp_tokenize
 
 # freq_dict = pickle.load('pickledCorpus')
 
-start_word = "I"
-end_words = ['.','?','!','...',',']
-# corpus = nltk.book.text1
-# # tokenizer = RegexpTokenizer("[\w]+([-'][\w]+)*]")
-# tokens= regexp_tokenize(corpus,"[\w']+")
+start_words = ["I", 'You', 'We', 'Hello', 'Dear', 'They'] #TODO do we want to allow for a greater range of start words?
+end_words = ['.','?','!','...']
 
-# tokens = tokenizer.tokenize(corpus)
-
-# bigrams = nltk.bigrams(corpus)
-# cfd = nltk.ConditionalFreqDist(bigrams)
-
+def chooseStartWord(start_words):
+	return np.random.choice(start_words, 1)
 
 def build_sentence(start, end_words, cfd):
 	if start in end_words:
 		return start
 	next_word = getNextWord(start, cfd)
-	sentence = start + ' ' + build_sentence(next_word, end_words, cfd)
+	sentence = start + ' ' + build_sentence(next_word, end_words, cfd) #TODO handle spaces with punctuation?
 	return sentence
-
 
 def getNextWord(word, cfd):
 	word_dict = cfd[word]
