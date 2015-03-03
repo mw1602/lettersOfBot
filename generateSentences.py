@@ -19,7 +19,7 @@ def build_sentence(start, end_words, cfd):
 	return sentence
 
 def getNextWord(word, cfd):
-	if len(cfd[word]) != 0:
+	if len(cfd[word]) != 0: #to deal with words that have no continuations. Just end the sentence here for now. 
 		word_dict = cfd[word]
 		words = word_dict.keys()
 		freqs = word_dict.values()
