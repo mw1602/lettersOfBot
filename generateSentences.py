@@ -8,6 +8,11 @@ from nltk.tokenize import regexp_tokenize
 start_words = ["I", 'You', 'We', 'Hello', 'Dear', 'They'] #TODO do we want to allow for a greater range of start words?
 end_words = ['.','?','!','...']
 
+def loadPickledCorpus(path):
+	pkl_file = open(path, 'rb')
+	cfd = pickle.load(pkl_file)
+	pkl_file.close()
+
 def chooseStartWord(start_words):
 	return np.random.choice(start_words, 1)
 
