@@ -19,9 +19,11 @@ def build_sentence(start, end_words, cfd):
 	return sentence
 
 def getNextWord(word, cfd):
-	word_dict = cfd[word]
-	words = word_dict.keys()
-	freqs = word_dict.values()
-	normed_freqs = [float(f)/sum(freqs) for f in freqs]
-	next_word = np.random.choice(words, 1,p=normed_freqs)
-	return next_word[0]
+	if len(cfd[word]) != 0:
+		word_dict = cfd[word]
+		words = word_dict.keys()
+		freqs = word_dict.values()
+		normed_freqs = [float(f)/sum(freqs) for f in freqs]
+		next_word = np.random.choice(words, 1,p=normed_freqs)
+		return next_word[0]
+	else: return '.'
