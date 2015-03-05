@@ -48,7 +48,18 @@ def outputText(tweets):
 	return tweet_text
 
 def cleanTweetText(tweet_text):
-	pass
+	clean_text= []
+	for tweet in tweet_text:
+		words = tweet.split()
+		clean_words = [word for word in words if word[0] != '@' and word[0:4] != 'http'] #hacky way to get rid of irrelevant tweet words and urls
+		clean_text.append(' '.join(clean_words))
+	return clean_text
+
+def writeTextFile(clean_text, title):
+	with open(title, 'w') as text_file:
+		for tweet in clean_text:
+			text_file.write(tweet.encode("UTF-8") +'\n')
+
 
 
 
