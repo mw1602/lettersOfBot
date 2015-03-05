@@ -1,3 +1,6 @@
 lettersOfBot/
 lettersOfNote/
+empties.txt
+full.txt
+setKeys.sh
 *.pyc
